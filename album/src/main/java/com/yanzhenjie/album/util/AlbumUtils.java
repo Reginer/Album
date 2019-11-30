@@ -65,24 +65,9 @@ public class AlbumUtils {
      */
     @NonNull
     public static File getAlbumRootPath(Context context) {
-        if (sdCardIsAvailable()) {
-            return new File(Environment.getExternalStorageDirectory(), CACHE_DIRECTORY);
-        } else {
-            return new File(context.getFilesDir(), CACHE_DIRECTORY);
-        }
+        return new File(context.getFilesDir(), CACHE_DIRECTORY);
     }
 
-    /**
-     * SD card is available.
-     *
-     * @return true when available, other wise is false.
-     */
-    public static boolean sdCardIsAvailable() {
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            return Environment.getExternalStorageDirectory().canWrite();
-        } else
-            return false;
-    }
 
     /**
      * Setting {@link Locale} for {@link Context}.
@@ -167,7 +152,6 @@ public class AlbumUtils {
      * Generate a random jpg file path.
      *
      * @return file path.
-     *
      * @deprecated use {@link #randomJPGPath(Context)} instead.
      */
     @NonNull
@@ -181,12 +165,11 @@ public class AlbumUtils {
      * Generate a random jpg file path.
      *
      * @param context context.
-     *
      * @return file path.
      */
     @NonNull
     public static String randomJPGPath(Context context) {
-        if(!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+        if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             return randomJPGPath(context.getCacheDir());
         }
         return randomJPGPath();
@@ -207,7 +190,6 @@ public class AlbumUtils {
      * Generate a random mp4 file path.
      *
      * @return file path.
-     *
      * @deprecated use {@link #randomMP4Path(Context)} instead.
      */
     @NonNull
@@ -221,12 +203,11 @@ public class AlbumUtils {
      * Generate a random mp4 file path.
      *
      * @param context context.
-     *
      * @return file path.
      */
     @NonNull
     public static String randomMP4Path(Context context) {
-        if(!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+        if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             return randomMP4Path(context.getCacheDir());
         }
         return randomMP4Path();
