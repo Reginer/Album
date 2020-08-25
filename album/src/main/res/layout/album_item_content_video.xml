@@ -36,6 +36,7 @@
         </com.yanzhenjie.album.widget.TransferLayout>
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/tv_duration"
             style="@style/Album.WrapContent"
             android:layout_alignParentBottom="true"
